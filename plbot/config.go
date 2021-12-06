@@ -14,7 +14,7 @@ type Config struct {
 
 func loadConfig(fileName string) (c *Config, error) {
 	file, err := ioutil.ReadFile(fileName)
-
+	
 	if err != nil {
 		return c, err
 	}
