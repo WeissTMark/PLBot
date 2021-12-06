@@ -2,7 +2,6 @@ package plbot
 
 import (
 	"github.com/bwmarrin/discordgo"
-	"errors"
 )
 
 type command interface {
