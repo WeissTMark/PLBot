@@ -10,11 +10,16 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var TOKEN = "<TOKEN>"
 
 func main() {
+	c, err := plbot.loadConfig("config.json")
+
+	if err != nil {
+		return
+	}
+
 	// Create a new Discord session using the provided bot token.
-	dg, err := discordgo.New("Bot " + TOKEN)
+	dg, err := discordgo.New("Bot " + c.Token)
 	if err != nil {
 		fmt.Println("error creating Discord session,", err)
 		return

@@ -1,3 +1,8 @@
+/*
+	Author: Charles Shook
+	Description: Structure for loading in discord bot config.
+*/
+
 package plbot
 
 import (
@@ -12,7 +17,7 @@ type Config struct {
 	BotPrefix string `json: "BotPrefix"`
 }
 
-func loadConfig(fileName string) (c *Config, error) {
+func loadConfig(fileName string) (*Config, error) {
 	file, err := ioutil.ReadFile(fileName)
 
 	if err != nil {

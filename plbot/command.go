@@ -1,3 +1,8 @@
+/*
+	Author: Charles Shook
+	Description: An interface for bot commands.
+*/
+
 package plbot
 
 import (
@@ -6,6 +11,6 @@ import (
 )
 
 type command interface {
-	create() error
+	create() (discordgo.MessageCreate, error)
 	send(s *discordgo.Session, m *discordgo.MessageCreate) error
 }

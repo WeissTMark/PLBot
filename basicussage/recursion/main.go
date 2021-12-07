@@ -1,3 +1,8 @@
+/*
+	Author: Charles Shook
+	Description: Showing off recursion in Go!
+*/
+
 package main
 
 import (
