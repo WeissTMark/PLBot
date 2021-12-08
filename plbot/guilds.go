@@ -1,6 +1,6 @@
 package plbot
 
-type guilds struct {
+type Guilds struct {
 	id      string
 	channel map[string]channels
 }
