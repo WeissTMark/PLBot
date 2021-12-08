@@ -7,10 +7,13 @@ import (
 	"strings"
 	"syscall"
 
+	"plbot"
+
 	"github.com/bwmarrin/discordgo"
 )
 
 var TOKEN = "OTAwNzk5NDg3MjcyOTQ3NzEy.YXGk5Q.Rali3Qb2DkaH5xOlJ6zZRv6kVsY"
+var ANALYTICS = plbot.CreateAnalytics()
 
 func main() {
 	// Create a new Discord session using the provided bot token.
@@ -54,7 +57,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	//Check if guild/channel exist, and/or create them
+	plbot.RunAnalytics(m, ANALYTICS)
+
 	command := strings.Split(m.Content, " ")
 	command[0] = strings.ToLower(command[0])
+
 	// switch command[0] {}
 }
