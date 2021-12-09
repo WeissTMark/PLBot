@@ -39,6 +39,10 @@ func ListRoles(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 }
 
+/*
+	Author: Christopher Bare
+	Description: A command to change the color of a role
+*/
 func ChangeRoleColor(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// [1] role to change
 	// [2] color
@@ -88,6 +92,10 @@ func ChangeRoleColor(s *discordgo.Session, m *discordgo.MessageCreate) {
 	return
 }
 
+/*
+	Author: Christopher Bare
+	Description: Returns a list of the roles a member has
+*/
 func getMemberRoles(m *discordgo.Member, g *discordgo.Guild) []*discordgo.Role {
 	memroles := m.Roles
 	guildroles := g.Roles
@@ -107,6 +115,10 @@ func getMemberRoles(m *discordgo.Member, g *discordgo.Guild) []*discordgo.Role {
 	return roleList
 }
 
+/*
+	Author: Christopher Bare
+	Description: A function that tries to get a color from a hex code or color name
+*/
 func getColor(input string) int {
 	// list of colors
 	colors := map[string]int{"red": 0xFF0000, "green": 0x00FF00, "blue": 0x0000FF,
