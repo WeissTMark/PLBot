@@ -1,3 +1,7 @@
+/*
+	Author: Mark Weiss
+	Description: The Guilds struct to allow multiple guilds
+*/
 package plbot
 
 type Guilds struct {

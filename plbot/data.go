@@ -1,7 +1,13 @@
+/*
+	Author: Mark Weiss
+	Description: All functions needed to add data to the data structure, as well as the "ToString" function that prints the data in a nice fashion
+*/
+
 package plbot
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"strings"
 	"unicode"
@@ -119,8 +125,8 @@ func (d *data) addToD(m discordgo.Timestamp) {
 	hour := strings.Split(string(m), "T")
 	hour = strings.Split(hour[1], ":")
 	to, _ := strconv.Atoi(hour[0])
-	to = to - 7
-	fmt.Println("tod length: ", len(d.tod))
+	to = int(math.Abs(float64(to - 7.0)))
+
 	if len(d.tod) <= 0 {
 		d.tod = map[int]int{to: 1}
 	} else {
@@ -132,6 +138,25 @@ func (d *data) addToD(m discordgo.Timestamp) {
 			d.tod[to] = 1
 		}
 	}
+}
 
-	fmt.Println(d.tod)
+func (d data) toString() string {
+	msg := "```Words: "
+	for key, value := range d.words {
+		msg += key + ":" + fmt.Sprint(value) + " "
+	}
+	msg += "\nLetters: "
+	for key, value := range d.letters {
+		msg += string(key) + ":" + fmt.Sprint(value) + " "
+	}
+	msg += "\nPunctuation: "
+	for key, value := range d.punct {
+		msg += string(key) + ":" + fmt.Sprint(value) + " "
+	}
+	msg += "\nTime of Day: "
+	for key, value := range d.tod {
+		msg += fmt.Sprint(key) + ":" + fmt.Sprint(value) + " "
+	}
+	msg += "\n```"
+	return msg
 }

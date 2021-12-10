@@ -1,3 +1,8 @@
+/*
+	Author: Mark Weiss
+	Description: The two overarching functions to allow the constantly running bot to interact with the data
+*/
+
 package plbot
 
 import (
@@ -37,8 +42,5 @@ func RunAnalytics(m *discordgo.MessageCreate, info map[string]Guilds) map[string
 	chans.analytics = dat
 	info[m.GuildID].channel[m.ChannelID] = chans
 
-	//ana.addPunct(m.Message)
-	//ana.addLetters(m.Message)
-	//ana.addToD(m.Timestamp)
 	return info
 }

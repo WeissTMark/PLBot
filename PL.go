@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"os/signal"
+	"plbot"
 	"strings"
 	"syscall"
-
-	"plbot"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -60,8 +60,25 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	//Check if guild/channel exist, and/or create them
 	ANALYTICS = plbot.RunAnalytics(m, ANALYTICS)
 
+	if !strings.HasPrefix(m.Content, "!") {
+		return
+	}
+
 	command := strings.Split(m.Content, " ")
 	command[0] = strings.ToLower(command[0])
+	command[0] = strings.Replace(command[0], "!", "", 1)
 
-	// switch command[0] {}
+	switch command[0] {
+	case "stats":
+
+		plbot.PrintStats(s, m, ANALYTICS)
+	}
+	fmt.Println(quadraticEquation(1.0, 2.0, 3.0))
+}
+
+func quadraticEquation(a float64, b float64, c float64) float64 {
+	var x float64
+	x = -b + math.Sqrt((b*b)-4*a*c)
+	x = x / (2 * a)
+	return x
 }
