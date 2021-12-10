@@ -4,10 +4,18 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+/*
+	Author: Mark Weiss
+	Description: Creates a map object for the data structure
+*/
 func CreateAnalytics() map[string]Guilds {
 	return make(map[string]Guilds)
 }
 
+/*
+	Author: Mark Weiss
+	Description: Runs the given message through all analytics functions adding words, letters, punctuation, and time of day to the data structure
+*/
 func RunAnalytics(m *discordgo.MessageCreate, info map[string]Guilds) map[string]Guilds {
 	_, there := info[m.GuildID]
 	if !there {

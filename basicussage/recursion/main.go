@@ -9,14 +9,14 @@ import (
 	"fmt"
 )
 
-func fib(n int) int {
+func fact(n int) int {
 	if n == 0 {
 		return 1
 	}
 
-	return n * fib(n - 1)
+	return n * fact(n-1)
 }
 
 func main() {
-	fmt.Println(fib(7))
+	fmt.Println(fact(7))
 }

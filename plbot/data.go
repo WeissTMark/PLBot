@@ -21,6 +21,10 @@ type data struct {
 	tod     map[int]int
 }
 
+/*
+	Author: Mark Weiss
+	Description: Adds all words in the message to the data structure
+*/
 func (d *data) addWords(m *discordgo.Message) {
 
 	f := func(c rune) bool {
@@ -54,6 +58,10 @@ func (d *data) addWords(m *discordgo.Message) {
 	}
 }
 
+/*
+	Author: Mark Weiss
+	Description: Adds all letters in the given message to the data structure
+*/
 func (d *data) addLetters(m *discordgo.Message) {
 
 	f := func(c rune) bool {
@@ -87,6 +95,10 @@ func (d *data) addLetters(m *discordgo.Message) {
 	}
 }
 
+/*
+	Author: Mark Weiss
+	Description: Adds all punctuation in the given message to the data structure
+*/
 func (d *data) addpunct(m *discordgo.Message) {
 
 	f := func(c rune) bool {
@@ -120,6 +132,10 @@ func (d *data) addpunct(m *discordgo.Message) {
 	}
 }
 
+/*
+	Author: Mark Weiss
+	Description: Adds the hour of the given message to the data structure
+*/
 func (d *data) addToD(m discordgo.Timestamp) {
 	hour := strings.Split(string(m), "T")
 	hour = strings.Split(hour[1], ":")
@@ -142,6 +158,10 @@ func (d *data) addToD(m discordgo.Timestamp) {
 	}
 }
 
+/*
+	Author: Mark Weiss
+	Description: turns the given data structure into a nice looking discord formated string
+*/
 func (d data) toString() string {
 	msg := "```Words: "
 	for key, value := range d.words {

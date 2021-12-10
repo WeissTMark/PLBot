@@ -325,6 +325,10 @@ func getColor(input string) int {
 	return color
 }
 
+/*
+	Author: Mark Weiss
+	Description: A function that prints the stats collected on the given server
+*/
 func PrintStats(s *discordgo.Session, m *discordgo.MessageCreate, analytics map[string]Guilds) {
 	msg := m.Content
 	args := strings.Split(msg, " ")
@@ -338,6 +342,10 @@ func PrintStats(s *discordgo.Session, m *discordgo.MessageCreate, analytics map[
 
 }
 
+/*
+	Author: Mark Weiss
+	Description: A function that gets the stats given a channel ID
+*/
 func getStats(s *discordgo.Session, m *discordgo.MessageCreate, chID string, analytics map[string]Guilds) {
 	guil, er := analytics[m.GuildID]
 	if !er {
