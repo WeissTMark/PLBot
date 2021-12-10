@@ -142,7 +142,13 @@ func DivideCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	var floatTwo float64
 	floatTwo, err = strconv.ParseFloat(commands[2], 64)
 
-	solution += fmt.Sprintf("%f", floatOne/floatTwo)
+	if floatTwo != 0 {
+		solution += fmt.Sprintf("%f", floatOne/floatTwo)
+
+	}
+	if floatTwo == 0 {
+		solution = "Error, divide by zero"
+	}
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
