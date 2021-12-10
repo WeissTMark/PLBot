@@ -20,9 +20,6 @@ func HandlerMessageCreate(s * discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// channel, _ := dg.Channel(m.ChannelID)
-	// v := voiceInstances[channel.GuildID]
-
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	command := strings.Fields(content)
 
@@ -37,10 +34,20 @@ func HandlerMessageCreate(s * discordgo.Session, m *discordgo.MessageCreate) {
 		DateCommand(s, m)
 	case "chicken":
 		ChickenCommand(s, m)
-	// case "radio":
-	// 	RadioCommand(s, m, v)
-	// case "join":
-	// 	JoinCommand(s, m, v)
+	case "add":
+		AddCommand(s, m)
+	case "sub":
+		SubCommand(s, m)
+	case "divide":
+		DivideCommand(s, m)
+	case "play":
+		PlayCommand(s, m)
+	case "stop":
+		StopCommand(s, m)
+	case "listroles":
+		ListRoles(s, m)
+	case "rolecolor":
+		ChangeRoleColor(s, m)
 	default:
 		return
 	}
