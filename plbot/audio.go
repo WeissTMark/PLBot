@@ -3,6 +3,7 @@ package plbot
 import (
 	"github.com/bwmarrin/discordgo"
 	"time"
+	"github.com/jonas747/dca"
 )
 
 var voiceChannel *discordgo.VoiceConnection

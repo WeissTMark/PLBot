@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+var ANALYTICS map[string]Guilds
+
 func HandlerMessageCreate(s * discordgo.Session, m *discordgo.MessageCreate) {
 	// Do NOT respond to messages that the bot sends
 	if m.Author.ID == s.State.User.ID {
@@ -26,6 +28,8 @@ func HandlerMessageCreate(s * discordgo.Session, m *discordgo.MessageCreate) {
 	if len(command) == 0 {
 		return
 	}
+
+	ANALYTICS = RunAnalytics(m, ANALYTICS)
 
 	switch command[0] {
 	case "help":
@@ -48,6 +52,8 @@ func HandlerMessageCreate(s * discordgo.Session, m *discordgo.MessageCreate) {
 		ListRoles(s, m)
 	case "rolecolor":
 		ChangeRoleColor(s, m)
+	case "stats":
+		PrintStats(s, m, ANALYTICS)
 	default:
 		return
 	}
