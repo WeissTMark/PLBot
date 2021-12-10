@@ -1,18 +1,19 @@
 package plbot
 
 import (
-	"github.com/bwmarrin/discordgo"
-	"time"
-	"strings"
-	"strconv"
 	"fmt"
+	"strconv"
+	"strings"
+	"time"
+
+	"github.com/bwmarrin/discordgo"
 )
 
 /*
 	Author: Charles Shook
 	Description: A help command that displays all the commands that the bot can do.
 */
-func HelpCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func HelpCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	helpMessage := "I am here to help! \n\n" +
 		"My commands are: \n" +
 		config.BotPrefix + " help -> Shows the help commands. \n" +
@@ -23,12 +24,11 @@ func HelpCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, helpMessage)
 }
 
-
 /*
 	Author: Charles Shook
 	Description: Command that allows the bot to return the current date.
 */
-func DateCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func DateCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, time.Now().Format("01-02-2006"))
 }
 
@@ -36,7 +36,7 @@ func DateCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	Author: Charles Shook
 	Description:Command that impliments the Chicken language talked about in PL.
 */
-func ChickenCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func ChickenCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	command := strings.Fields(content)
 	chicken := ""
@@ -58,7 +58,7 @@ func ChickenCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, chicken)
 }
 
-func AddCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func AddCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
 	solution := ""
@@ -78,11 +78,11 @@ func AddCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	var floatTwo float64
 	floatTwo, err = strconv.ParseFloat(commands[2], 64)
 
-	solution += fmt.Sprintf("%f", floatOne + floatTwo)
+	solution += fmt.Sprintf("%f", floatOne+floatTwo)
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
-func SubCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func SubCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
 	solution := ""
@@ -102,11 +102,11 @@ func SubCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	var floatTwo float64
 	floatTwo, err = strconv.ParseFloat(commands[2], 64)
 
-	solution += fmt.Sprintf("%f", floatOne - floatTwo)
+	solution += fmt.Sprintf("%f", floatOne-floatTwo)
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
-func DivideCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func DivideCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
 	solution := ""
@@ -125,12 +125,17 @@ func DivideCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 
 	var floatTwo float64
 	floatTwo, err = strconv.ParseFloat(commands[2], 64)
+	if floatTwo != 0 {
+		solution += fmt.Sprintf("%f", floatOne/floatTwo)
 
-	solution += fmt.Sprintf("%f", floatOne / floatTwo)
+	}
+	if floatTwo == 0 {
+		solution = "Error, divide by zero"
+	}
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
-func PlayCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func PlayCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
 
@@ -144,7 +149,7 @@ func PlayCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
 	}
 }
 
-func StopCommand(s * discordgo.Session, m *discordgo.MessageCreate) {
+func StopCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	channel, _ := s.State.Channel(m.ChannelID)
 	guilds, _ := s.State.Guild(channel.GuildID)
 
