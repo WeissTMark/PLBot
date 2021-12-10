@@ -21,7 +21,9 @@ func HelpCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 		config.BotPrefix + " add num1 num2 -> Adds two numbers. \n" +
 		config.BotPrefix + " sub num1 num2 -> Subtracts two numbers. \n" +
 		config.BotPrefix + " listroles -> Lists roles a user has as well as an associated roleindex\n" +
-		config.BotPrefix + " rolecolor roleindex color -> Changes the color of the role associated with roleindex to \"color\", \"color\" can be either the name of a color or a hexadecimal number\n"
+		config.BotPrefix + " rolecolor roleindex color -> Changes the color of the role associated with roleindex to \"color\", \"color\" can be either the name of a color or a hexadecimal number\n" +
+		config.BotPrefix + " Print out all stats collected from the current channel" +
+		config.BotPrefix + " <Channel ID> Print out all stats collected from the channel corresponding to the given ID"
 
 	s.ChannelMessageSend(m.ChannelID, helpMessage)
 }
