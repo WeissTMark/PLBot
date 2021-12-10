@@ -7,7 +7,6 @@ package plbot
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 	"strings"
 	"unicode"
@@ -125,7 +124,10 @@ func (d *data) addToD(m discordgo.Timestamp) {
 	hour := strings.Split(string(m), "T")
 	hour = strings.Split(hour[1], ":")
 	to, _ := strconv.Atoi(hour[0])
-	to = int(math.Abs(float64(to - 7.0)))
+	to = (to - 7.0)
+	if to < 0 {
+		to = 24 + to
+	}
 
 	if len(d.tod) <= 0 {
 		d.tod = map[int]int{to: 1}
