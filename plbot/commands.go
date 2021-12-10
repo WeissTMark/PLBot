@@ -62,6 +62,10 @@ func ChickenCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, chicken)
 }
 
+/*
+	Author: Charles Shook
+	Description: Allows you to add two numbers.
+*/
 func AddCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
@@ -86,6 +90,10 @@ func AddCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
+/*
+	Author: Charles Shook
+	Description: Allows you to subtract two numbers.
+*/
 func SubCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
@@ -110,6 +118,10 @@ func SubCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
+/*
+	Author: Charles Shook
+	Description: Allows you to divide two numbers.
+*/
 func DivideCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
@@ -134,6 +146,10 @@ func DivideCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	s.ChannelMessageSend(m.ChannelID, solution)
 }
 
+/*
+	Author: Charles Shook
+	Description: Allows you to play audio file found on machine bot is running on.
+*/
 func PlayCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Replace(m.Content, config.BotPrefix, "", 1)
 	commands := strings.Fields(content)
@@ -148,6 +164,10 @@ func PlayCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 }
 
+/*
+	Author: Charles Shook
+	Description: Stops the playing of an audio file.
+*/
 func StopCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	channel, _ := s.State.Channel(m.ChannelID)
 	guilds, _ := s.State.Guild(channel.GuildID)

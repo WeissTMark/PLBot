@@ -1,8 +1,3 @@
-/*
-	Author: Charles Shook
-	Description: Handlers for different type of messages.
-*/
-
 package plbot
 
 import (
@@ -11,6 +6,10 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+/*
+	Author: Charles Shook
+	Description: Handler for different incomming commands.
+*/
 func HandlerMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Do NOT respond to messages that the bot sends
 	if m.Author.ID == s.State.User.ID {

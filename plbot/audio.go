@@ -9,6 +9,10 @@ import (
 var voiceChannel *discordgo.VoiceConnection
 var isPlaying bool
 
+/*
+	Author: Charles Shook
+	Description: Plays a audio file that is on the same device that the bot is running on.
+*/
 func PlayURL(s * discordgo.Session, serverID string, channelID string, url string) (error) {
 	options := dca.StdEncodeOptions
 	options.RawOutput = true
@@ -40,6 +44,10 @@ func PlayURL(s * discordgo.Session, serverID string, channelID string, url strin
 	return nil
 }
 
+/*
+	Author: Charles Shook
+	Description: Stops the playing of audio.
+*/
 func Stop(s * discordgo.Session, serverID string, channelID string) (error) {
 	vc, err := s.ChannelVoiceJoin(serverID, channelID, false, false)
 
