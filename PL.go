@@ -12,7 +12,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var TOKEN = "OTAwNzk5NDg3MjcyOTQ3NzEy.YXGk5Q.Rali3Qb2DkaH5xOlJ6zZRv6kVsY"
+var TOKEN = "*"
 var ANALYTICS map[string]plbot.Guilds
 
 func main() {
